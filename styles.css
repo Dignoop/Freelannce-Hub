@@ -1,0 +1,2429 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: #334155;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3B82F6;
+}
+
+.nav-logo i {
+    font-size: 1.8rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #64748B;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #3B82F6;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3B82F6;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/* Page transitions */
+.page {
+    display: none;
+    min-height: 100vh;
+    padding-top: 80px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+    opacity: 0.1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.search-container {
+    margin-top: 2rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    background: transparent;
+}
+
+.search-btn {
+    background: #3B82F6;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Featured Jobs Section */
+.featured-jobs {
+    padding: 80px 0;
+    background: #F8FAFC;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #1E293B;
+}
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.job-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #E2E8F0;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #3B82F6;
+}
+
+.job-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    background: #3B82F6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.job-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1E293B;
+    margin-bottom: 0.25rem;
+}
+
+.company-name {
+    color: #64748B;
+    font-size: 0.9rem;
+}
+
+.job-details {
+    margin-bottom: 1.5rem;
+}
+
+.job-location,
+.job-type,
+.job-salary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    color: #64748B;
+    font-size: 0.9rem;
+}
+
+.job-description {
+    color: #475569;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.apply-btn {
+    background: #3B82F6;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.apply-btn:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+}
+
+/* Stats Section */
+.stats {
+    padding: 80px 0;
+    background: #1E293B;
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 3rem;
+    color: #3B82F6;
+    margin-bottom: 1rem;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Jobs Page */
+.jobs-section {
+    padding: 60px 0;
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #1E293B;
+}
+
+.filters-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 3rem;
+}
+
+.filter-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 200px;
+    gap: 1rem;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 0.75rem 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Authentication Pages */
+.auth-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+}
+
+.auth-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop') center/cover;
+    opacity: 0.1;
+}
+
+.auth-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.auth-form {
+    background: white;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1E293B;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: #3B82F6;
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #64748B;
+}
+
+.auth-link a {
+    color: #3B82F6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Page */
+.contact-section {
+    padding: 60px 0;
+    min-height: 100vh;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1E293B;
+}
+
+.contact-info p {
+    color: #64748B;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+.contact-item i {
+    color: #3B82F6;
+    width: 20px;
+}
+
+.contact-form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E2E8F0;
+}
+
+/* Footer */
+.footer {
+    background: #1E293B;
+    color: white;
+    padding: 3rem 0 1rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #CBD5E1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #3B82F6;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.footer-logo i {
+    color: #3B82F6;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #374151;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #3B82F6;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #374151;
+    color: #94A3B8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 2rem;
+        transition: left 0.3s ease;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+        color: #64748B;
+        font-size: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .search-box {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .search-btn {
+        border-radius: 8px;
+        justify-content: center;
+    }
+
+    .job-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .filter-group {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .nav-container {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .auth-form {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .job-card {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.job-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.job-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.job-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.job-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* Success/Error messages */
+.message {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.message.success {
+    background: #DCFCE7;
+    color: #166534;
+    border: 1px solid #BBF7D0;
+}
+
+.message.error {
+    background: #FEE2E2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+}
+
+/* Loading states */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #64748B;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #E5E7EB;
+    border-top-color: #3B82F6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 0.5rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* ===================================================== */
+/* FREELANCE HIRE / PROPOSAL PAGE (ADDED SAFELY)         */
+/* ===================================================== */
+
+/* Hire page background same as auth pages */
+#hire.auth-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Smooth entrance animation */
+#hire .auth-form {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Inputs consistency + interaction */
+#hire input,
+#hire textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+#hire input:focus,
+#hire textarea:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Proposal textarea height */
+#hire textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Buttons spacing */
+#hire .btn {
+    width: 100%;
+    margin-top: 0.75rem;
+}
+
+/* Cancel button style (secondary) */
+#hire .btn:not(.btn-primary) {
+    background: transparent;
+    border: 1px solid #D1D5DB;
+    color: #374151;
+}
+
+#hire .btn:not(.btn-primary):hover {
+    background: #F1F5F9;
+}
+
+/* ===================================================== */
+/* SERVICE / GIG CARD INTERACTIVITY (ENHANCEMENT)        */
+/* ===================================================== */
+
+.job-card {
+    cursor: pointer;
+}
+
+.job-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* Hire / Apply button pulse on hover */
+.job-card .apply-btn,
+.job-card .btn-primary {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.job-card .apply-btn:hover,
+.job-card .btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.35);
+}
+
+/* ===================================================== */
+/* PAGE TRANSITION POLISH                               */
+/* ===================================================== */
+
+.page {
+    will-change: opacity, transform;
+}
+
+/* ===================================================== */
+/* MOBILE POLISH FOR HIRE PAGE                           */
+/* ===================================================== */
+
+@media (max-width: 480px) {
+    #hire .auth-form {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    #hire textarea {
+        min-height: 100px;
+    }
+}
+/* ===================================================== */
+/* FEATURED SERVICES – INTERACTIVE POLISH (SAFE ADD)     */
+/* ===================================================== */
+
+/* Card base interaction */
+.featured-jobs .job-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Soft gradient overlay */
+.featured-jobs .job-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(59,130,246,0.15),
+        rgba(118,75,162,0.15)
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+/* Hover state */
+.featured-jobs .job-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    border-color: #3B82F6;
+}
+
+.featured-jobs .job-card:hover::before {
+    opacity: 1;
+}
+
+/* Title color interaction */
+.featured-jobs .job-card h3 {
+    transition: color 0.3s ease;
+}
+
+.featured-jobs .job-card:hover h3 {
+    color: #3B82F6;
+}
+
+/* Price emphasis */
+.featured-jobs .job-card p strong {
+    font-size: 1.05rem;
+    color: #1E293B;
+}
+
+/* Button shine animation */
+.featured-jobs .job-card .btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featured-jobs .job-card .btn-primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+/* Button hover effect */
+.featured-jobs .job-card:hover .btn-primary {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59,130,246,0.4);
+}
+
+.featured-jobs .job-card:hover .btn-primary::after {
+    left: 120%;
+}
+    /* ===================================================== */
+/* FIX CARD OVERLAP + INCREASE SPACING (FINAL FIX)       */
+/* ===================================================== */
+
+/* Increase grid spacing */
+.featured-jobs .job-grid {
+    row-gap: 3.5rem;   /* vertical spacing */
+    column-gap: 2.5rem;
+}
+
+/* Reduce hover movement to avoid collision */
+.featured-jobs .job-card:hover {
+    transform: translateY(-6px) scale(1.01);
+}
+
+/* Disable animation movement stacking */
+.featured-jobs .job-card {
+    animation: none; /* prevents overlap caused by fadeInUp */
+}
+
+/* Add internal spacing so content breathes */
+.featured-jobs .job-card h3 {
+    margin-bottom: 0.75rem;
+}
+
+.featured-jobs .job-card p {
+    margin-bottom: 1rem;
+}
+
+.featured-jobs .job-card p strong {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* Button separation */
+.featured-jobs .job-card .btn {
+    margin-top: 1rem;
+}
+/* ================================= */
+/* HERO SEARCH BAR – FINAL FIX       */
+/* ================================= */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 999px;
+    padding: 0.5rem;
+    max-width: 750px;
+    margin: 2rem auto 0;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    gap: 0.75rem;
+}
+
+/* Each input group */
+.search-field {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.25rem;
+    flex: 1;
+}
+
+/* Icons */
+.search-field i {
+    color: #64748B;
+    font-size: 1rem;
+}
+
+/* Inputs */
+.search-field input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 100%;
+    background: transparent;
+    color: #1E293B;
+}
+
+/* Divider between inputs */
+.search-box .divider {
+    width: 1px;
+    height: 35px;
+    background: #E5E7EB;
+}
+
+/* Button */
+.search-btn {
+    height: 52px;
+    padding: 0 2rem;
+    border-radius: 999px;
+    background: #3B82F6;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.search-btn:hover {
+    background: #2563EB;
+    box-shadow: 0 6px 18px rgba(59,130,246,0.45);
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+        border-radius: 16px;
+        padding: 1rem;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .search-btn {
+        width: 100%;
+    }
+}
+/* =============================== */
+/* SERVICES PAGE UPGRADE           */
+/* =============================== */
+
+.services-section {
+  padding: 80px 0;
+  background: #F8FAFC;
+}
+
+.service-category {
+  margin-bottom: 4rem;
+}
+
+.service-category h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1E293B;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Slightly tighter cards on services page */
+#services .job-card {
+  padding: 1.75rem;
+}
+
+/* Hover polish */
+#services .job-card:hover {
+  border-color: #3B82F6;
+  transform: translateY(-6px);
+}
+
+/* Button spacing */
+#services .job-card .btn {
+  margin-top: 1rem;
+}
+/* ========================================= */
+/* AUTH PAGES CONSISTENCY (LOGIN / JOIN)     */
+/* ========================================= */
+
+/* Reuse hire page layout */
+#login .auth-section,
+#register .auth-section,
+#contact .auth-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+}
+
+/* Background overlay */
+#login .auth-section::before,
+#register .auth-section::before,
+#contact .auth-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1920") center/cover;
+  opacity: 0.1;
+}
+
+/* Card container */
+#login .auth-container,
+#register .auth-container,
+#contact .auth-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Card box */
+#login .auth-form,
+#register .auth-form,
+#contact .auth-form {
+  background: white;
+  padding: 3rem;
+  border-radius: 14px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Headings */
+#login h1,
+#register h1,
+#contact h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1E293B;
+}
+
+/* Inputs & textarea */
+#login input,
+#register input,
+#register select,
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+#login input:focus,
+#register input:focus,
+#register select:focus,
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Buttons */
+#login .btn-primary,
+#register .btn-primary,
+#contact .btn-primary {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Contact page textarea height */
+#contact textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Mobile polish */
+@media (max-width: 480px) {
+  #login .auth-form,
+  #register .auth-form,
+  #contact .auth-form {
+    padding: 2rem;
+    margin: 1rem;
+  }
+}
+/* ========================================= */
+/* MAKE AUTH / HIRE CARDS SLIGHTLY SMALLER   */
+/* ========================================= */
+
+/* Reduce card width */
+.auth-container {
+  max-width: 360px; /* was ~420 */
+}
+
+/* Reduce padding inside card */
+.auth-form {
+  padding: 2.2rem; /* was 3rem */
+  border-radius: 12px;
+}
+
+/* Smaller heading */
+.auth-title,
+#login h1,
+#register h1,
+#contact h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs & textarea tighter */
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+/* Textarea height reduced */
+.auth-form textarea {
+  min-height: 90px;
+}
+
+/* Buttons slimmer */
+.auth-form .btn {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Reduce space between buttons */
+.auth-form .btn + .btn {
+  margin-top: 0.5rem;
+}
+
+/* Success box spacing */
+#proposalSuccess h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+#proposalSuccess p {
+  font-size: 0.95rem;
+}
+
+/* ========================================= */
+/* GPay-STYLE SUCCESS TICK ANIMATION         */
+/* ========================================= */
+
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+}
+
+.success-checkmark svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Circle animation */
+.checkmark-circle {
+  stroke: #22C55E;
+  stroke-width: 4;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-linecap: round;
+  animation: drawCircle 0.6s ease forwards;
+}
+
+/* Tick animation */
+.checkmark-check {
+  stroke: #22C55E;
+  stroke-width: 4;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: drawCheck 0.4s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* Animations */
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+#hire #proposalSuccess {
+  display: none;
+}
+/* =============================== */
+/* DARK BACKGROUND ONLY OVERRIDE */
+/* =============================== */
+
+body {
+  background: #0b0f14;
+  color: #e5e7eb;
+}
+
+/* White sections → Dark */
+.navbar,
+.featured-jobs,
+.services-section,
+.filters-container,
+.contact-form-container,
+.job-card,
+.auth-form,
+.search-box,
+.footer {
+  background: #0f172a !important;
+  color: #e5e7eb;
+  border-color: #1f2933;
+}
+
+/* Text */
+h1, h2, h3, h4 {
+  color: #e5e7eb !important;
+}
+
+p, span {
+  color: #9ca3af !important;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  background: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2933 !important;
+}
+
+/* Hero darker but same gradient */
+.hero {
+  background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+}
+
+/* Footer line */
+.footer {
+  border-top: 1px solid #1f2933;
+}
+/* ===================================================== */
+/* NEO DARK TECH THEME – UNIQUE LOOK (OVERRIDE ONLY)     */
+/* ===================================================== */
+
+body {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e5e7eb;
+}
+
+/* NAVBAR */
+.navbar {
+  background: rgba(2,6,23,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f2933;
+}
+
+.nav-logo span {
+  color: #60a5fa;
+}
+
+.nav-menu a {
+  color: #cbd5f5;
+}
+
+.nav-menu a:hover {
+  color: #60a5fa;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #020617, #1e3a8a, #020617) !important;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  text-shadow: 0 0 30px rgba(96,165,250,0.4);
+}
+
+.hero p {
+  color: #c7d2fe;
+}
+
+/* SEARCH BAR */
+.search-box {
+  background: rgba(15,23,42,0.9);
+  border: 1px solid #1f2933;
+}
+
+.search-field input {
+  color: #e5e7eb;
+}
+
+.search-btn {
+  background: linear-gradient(135deg,#3b82f6,#60a5fa);
+  box-shadow: 0 0 25px rgba(96,165,250,0.6);
+}
+
+/* SECTIONS */
+.featured-jobs,
+.services-section {
+  background: transparent !important;
+}
+
+/* CARDS */
+.job-card {
+  background: rgba(15,23,42,0.85);
+  border: 1px solid #1f2933;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+.job-card h3 {
+  color: #e5e7eb;
+}
+
+.job-card p {
+  color: #94a3b8;
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: linear-gradient(135deg,#3b82f6,#60a5fa);
+  box-shadow: 0 0 20px rgba(96,165,250,0.6);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* STATS */
+.stats {
+  background: linear-gradient(135deg,#020617,#020617,#1e3a8a);
+}
+
+.stat-item h3 {
+  color: #60a5fa;
+}
+
+/* FORMS */
+.auth-form,
+.contact-form-container {
+  background: rgba(15,23,42,0.95);
+  border: 1px solid #1f2933;
+}
+
+input, textarea, select {
+  background: #020617 !important;
+  border: 1px solid #1f2933 !important;
+  color: #e5e7eb !important;
+}
+
+/* FOOTER */
+.footer {
+  background: #020617;
+  border-top: 1px solid #1f2933;
+}
+
+/* REMOVE OLD WHITE FEEL */
+.section-title,
+.page-title {
+  color: #e5e7eb;
+}
+/* ===================================================== */
+/* LAYOUT UPGRADE – CYBER STARTUP PRO                    */
+/* ===================================================== */
+
+/* HERO → Split Layout */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  text-align: left;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  line-height: 1.1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Hero right glow panel illusion */
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -15%;
+  top: 0;
+  width: 45%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(96,165,250,0.35), transparent 70%);
+}
+
+/* NAVBAR → Centered brand */
+.nav-container {
+  justify-content: center;
+  gap: 4rem;
+}
+
+.nav-logo {
+  position: absolute;
+  left: 2rem;
+}
+
+/* FEATURED JOBS → Masonry Grid */
+.featured-jobs .job-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 3rem;
+}
+
+/* CARDS → Glass Panels */
+.job-card {
+  border-radius: 18px;
+  padding: 2.2rem;
+  backdrop-filter: blur(14px);
+}
+
+.job-card::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  border:1px solid rgba(96,165,250,0.25);
+  pointer-events:none;
+}
+
+/* BUTTON → Floating */
+.btn-primary {
+  border-radius: 999px;
+  padding: 0.8rem 2.5rem;
+}
+
+/* STATS → Horizontal Neon Bar */
+.stats {
+  border-top: 1px solid #1f2933;
+  border-bottom: 1px solid #1f2933;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(3,1fr);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* SERVICES → Card Wall */
+.services-section .job-grid {
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 2.5rem;
+}
+
+/* LOGIN / REGISTER → Center Panel */
+.auth-container {
+  max-width: 420px;
+}
+
+.auth-form {
+  border-radius: 20px;
+}
+
+/* FOOTER → Minimal */
+.footer {
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .nav-container {
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    position: static;
+  }
+}
+/* ===================================================== */
+/* FIXED NAVBAR – CLEAN, MODERN, RESPONSIVE              */
+/* ===================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0; 
+
+  width: 100%;
+  background: rgba(2,6,23,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f2933;
+  z-index: 9999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+/* Menu */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+    
+
+}
+
+.nav-menu li a {
+  color: #cbd5f5;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-menu li a:hover {
+  color: #60a5fa;
+}
+
+/* Underline hover */
+.nav-menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #60a5fa;
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+/* Page top spacing fix */
+.page {
+  padding-top: 90px !important;
+}
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+}
+
+/* ========================================= */
+/* 📱 MOBILE RESPONSIVE FIX (FINAL)          */
+/* ========================================= */
+
+/* ---------- Tablets & Phones ---------- */
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* SEARCH BAR */
+  .search-box {
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 1rem;
+  }
+
+  .search-field {
+    width: 100%;
+  }
+
+  .search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* JOB CARDS */
+  .job-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .job-card {
+    padding: 1.6rem;
+    border-radius: 16px;
+  }
+
+  /* STATS */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* NAVBAR */
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 0;
+  }
+}
+
+/* ---------- Small Phones ---------- */
+@media (max-width: 480px) {
+
+  /* HERO */
+  .hero h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  /* SEARCH */
+  .search-box {
+    padding: 0.8rem;
+  }
+
+  /* JOB CARDS */
+  .job-card {
+    padding: 1.4rem;
+  }
+
+  .job-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+  }
+
+  .price-amount {
+    font-size: 1rem;
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+  }
+
+  /* AUTH / HIRE FORM */
+  .auth-container {
+    max-width: 95%;
+  }
+
+  .auth-form {
+    padding: 1.8rem;
+  }
+
+  .auth-title {
+    font-size: 1.4rem;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 0.9rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    font-size: 0.85rem;
+    padding: 1.5rem 0;
+  }
+}
+/* ========================================= */
+/* 🍔 HAMBURGER MENU (MOBILE)                */
+/* ========================================= */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #60a5fa;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(2,6,23,0.98);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    padding-left: 0;
+    z-index: 9998;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .nav-menu li a {
+    font-size: 1.2rem;
+  }
+}
+
+/* Hamburger animation */
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ========================================= */
+/* 📱 MOBILE HERO – PROFESSIONAL FIX         */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero {
+    padding: 70px 20px 60px;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    font-weight: 700;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: #c7d2fe;
+    max-width: 85%;
+    margin: 0 auto;
+  }
+
+  /* SEARCH CARD */
+  .search-box {
+    margin-top: 1.8rem;
+    background: rgba(15,23,42,0.95);
+    border-radius: 20px;
+    padding: 1.2rem;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+    gap: 0.9rem;
+  }
+
+  .search-field {
+    background: #020617;
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+  }
+
+  .search-field input {
+    font-size: 0.95rem;
+  }
+
+  .search-btn {
+    height: 52px;
+    font-size: 1rem;
+    border-radius: 14px;
+    margin-top: 0.3rem;
+  }
+}
+/* ===================================================== */
+/* ✅ FINAL NAVBAR OVERRIDE (NO CONFLICTS)               */
+/* ===================================================== */
+
+.navbar {
+  height: 70px;
+}
+
+.nav-container {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.nav-logo {
+  position: relative;
+  left: 0;
+}
+
+/* HAMBURGER */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #60a5fa;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(2,6,23,0.98);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 9998;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+}
+
+/* HAMBURGER ANIMATION */
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ================= NAVBAR HARD FIX ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(2,6,23,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+/* MENU DESKTOP */
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  color: #cbd5f5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* HAMBURGER */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #60a5fa;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+/* HERO PUSH DOWN */
+.page,
+.hero {
+  padding-top: 70px;
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(2,6,23,0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: 0.35s ease;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+/* HAMBURGER ANIMATION */
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ================= CLEAN NAVBAR (FINAL) ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+/* DESKTOP MENU */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-menu a {
+  color: #cbd5f5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* HAMBURGER */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+.nav-container{
+    display: flex;
+}
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #60a5fa;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+/* PUSH CONTENT BELOW NAVBAR */
+.hero,
+.page {
+  padding-top: 70px;
+}
+
+/* ========== MOBILE ========== */
+@media (max-width: 768px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(2, 6, 23, 0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+}
+
+/* HAMBURGER ANIMATION */
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+/* ================= ABSOLUTE NAVBAR FORCE FIX ================= */
+
+/* Force navbar layout */
+.nav-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* Logo always left */
+.nav-logo {
+  position: static !important;
+  margin-right: auto !important;
+}
+
+/* Hamburger always right */
+.nav-toggle {
+  margin-left: auto !important;
+  align-self: center !important;
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .nav-menu {
+    top: 70px !important;
+  }
+}
+/* ================= MOBILE MENU TEXT FIX ================= */
+
+@media (max-width: 768px) {
+
+  .nav-menu {
+    text-align: center;
+  }
+
+  .nav-menu li {
+    list-style: none;
+  }
+
+  .nav-menu li a {
+    font-size: 1.6rem;          /* BIG & readable */
+    font-weight: 600;           /* professional weight */
+    letter-spacing: 0.5px;
+    color: #e5e7eb;
+    padding: 0.6rem 0;
+    display: inline-block;
+    transition: all 0.25s ease;
+    
+  }
+
+  /* Hover / tap feel */
+  .nav-menu li a:hover {
+    color: #60a5fa;
+    transform: scale(1.05);
+  }
+}
+
+/* EXTRA POLISH FOR SMALL PHONES */
+@media (max-width: 480px) {
+
+  .nav-menu li a {
+    font-size: 1.4rem;   /* slightly smaller but still bold */
+  }
+}
+/* ================= CLEAN DESKTOP NAVBAR FIX ================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f2933;
+  z-index: 9999;
+}
+
+.nav-container {
+  max-width: 1200px;
+  height: 70px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #60a5fa;
+}
+
+/* DESKTOP MENU */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-menu li a {
+  color: #cbd5f5;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #60a5fa;
+  transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+  width: 100%;
+}
+
+/* PUSH CONTENT BELOW NAVBAR */
+.hero,
+.page {
+  padding-top: 70px;
+}

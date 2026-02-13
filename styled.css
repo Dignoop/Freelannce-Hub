@@ -1,0 +1,115 @@
+/* =============================== */
+/* DARK PALETTE OVERRIDE (SAFE)    */
+/* =============================== */
+
+:root {
+  --bg-main: #0b0f1a;
+  --bg-card: #111827;
+  --bg-soft: #0f172a;
+  --border: #1f2933;
+  --text-main: #e5e7eb;
+  --text-soft: #9ca3af;
+  --primary: #38bdf8;
+  --primary-dark: #0284c7;
+  --accent: #22d3ee;
+}
+
+/* Global */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo,
+.nav-link {
+  color: var(--text-main);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+}
+
+/* Sections */
+.hero,
+.auth-section {
+  background: linear-gradient(135deg, #020617, #0b1120);
+}
+
+.featured-jobs,
+.services-section {
+  background: var(--bg-soft);
+}
+
+/* Cards */
+.job-card,
+.auth-form,
+.filters-container,
+.contact-form-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+  background: #020617;
+  color: var(--text-main);
+  border-color: var(--border);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
+
+/* Buttons */
+.btn-primary,
+.apply-btn,
+.search-btn {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #020617;
+  border: none;
+}
+
+.btn-primary:hover,
+.apply-btn:hover,
+.search-btn:hover {
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  box-shadow: 0 0 20px rgba(56,189,248,0.5);
+}
+
+/* Search Box */
+.search-box {
+  background: #020617;
+}
+
+/* Footer */
+.footer {
+  background: #020617;
+  color: var(--text-soft);
+  border-top: 1px solid var(--border);
+}
+
+/* Stats */
+.stats {
+  background: #020617;
+}
+
+/* Text */
+h1, h2, h3, h4 {
+  color: var(--text-main);
+}
+
+p {
+  color: var(--text-soft);
+}

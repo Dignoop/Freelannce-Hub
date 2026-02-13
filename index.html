@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreelanceHub - Hire & Work Freelance</title>
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#0f172a" />
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+  <div class="nav-container">
+    
+    <div class="nav-logo">
+      <i class="fas fa-briefcase"></i>
+      <span>FreelanceHub</span>
+    </div>
+
+   <ul class="nav-menu" id="navMenu">
+  <li><a class="nav-link active" data-page="home" href="#">Home</a></li>
+  <li><a class="nav-link" data-page="services" href="#">Gigs</a></li>
+  <li><a class="nav-link" data-page="login" href="#">Login</a></li>
+  <li><a class="nav-link" data-page="register" href="#">Register</a></li>
+  <li><a class="nav-link" data-page="contact" href="#">Contact</a></li>
+</ul>
+
+
+    <div class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+</nav>
+
+
+    <!-- HOME -->
+    <div class="page active" id="home">
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Hire Freelancers or Work as One</h1>
+          <p>Connect with skilled freelancers and clients across India</p>
+
+          <div class="search-box">
+            <div class="search-field">
+              <i class="fas fa-search"></i>
+              <input
+                type="text"
+                placeholder="Skill or Service (Web Developer, Designer)"
+              />
+            </div>
+            <div class="divider"></div>
+            <div class="search-field">
+              <i class="fas fa-map-marker-alt"></i>
+              <input
+                type="text"
+                placeholder="Category (Design, Tech, Writing)"
+              />
+            </div>
+            <button class="search-btn">Search Services</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-jobs">
+        <div class="container">
+          <h2>Featured Freelance Services</h2>
+
+          <!-- ✅ ADDED: Loading state -->
+          <p id="loading" class="loading" style="display: none">
+            Loading services...
+          </p>
+
+          <!-- ✅ ADDED: Empty state -->
+          <p id="emptyMsg" style="display: none">
+            No freelance services available right now.
+          </p>
+
+          <div class="job-grid">
+            <!-- your existing cards remain unchanged -->
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Frontend Website Development</h3>
+                <p class="service-desc">HTML, CSS, JavaScript, React</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹8,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Frontend Website Development', '₹8,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Backend Development</h3>
+                <p class="service-desc">Node.js, PHP, MySQL</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹10,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Backend Development', '₹10,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>UI/UX Design</h3>
+                <p class="service-desc">Figma, Adobe XD</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹6,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('UI/UX Design', '₹6,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Mobile App Development</h3>
+                <p class="service-desc">Flutter, React Native, Android</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹12,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Mobile App Development', '₹12,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Full Stack Development</h3>
+                <p class="service-desc">React, Node.js, MongoDB</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹15,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Full Stack Development', '₹15,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Graphic Design</h3>
+                <p class="service-desc">Photoshop, Illustrator</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹5,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Graphic Design', '₹5,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Digital Marketing</h3>
+                <p class="service-desc">SEO, Google Ads, Analytics</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹7,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Digital Marketing', '₹7,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Content Writing</h3>
+                <p class="service-desc">Blogs, Website Content, SEO</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹4,000</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Content Writing', '₹4,000')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+
+            <div class="job-card">
+              <div class="card-content">
+                <h3>Video Editing</h3>
+                <p class="service-desc">Premiere Pro, After Effects</p>
+              </div>
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-label">Starting From</span>
+                  <span class="price-amount">₹6,500</span>
+                </div>
+                <button
+                  class="btn btn-primary"
+                  onclick="openHire('Video Editing', '₹6,500')"
+                >
+                  Hire Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <h3>45,000+</h3>
+              <p>Freelancers</p>
+            </div>
+            <div class="stat-item">
+              <h3>12,000+</h3>
+              <p>Clients</p>
+            </div>
+            <div class="stat-item">
+              <h3>90,000+</h3>
+              <p>Projects Completed</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ✅ ADDED: How it works section (exam-friendly) -->
+      <section class="services-section">
+        <div class="container">
+          <h2>How FreelanceHub Works</h2>
+          <p>
+            FreelanceHub uses a backend API built with Node.js and Express.
+            Freelance services are fetched dynamically and displayed on the
+            website. Clients can browse services and send project proposals
+            without page reloads.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="page" id="services">
+      <section class="services-section">
+        <div class="container">
+          <h1 class="page-title">Browse Freelance Categories</h1>
+
+          <div class="service-category">
+            <h2>💻 Development</h2>
+            <div class="job-grid">
+              <div class="job-card">
+                <h3>Full Stack Development</h3>
+                <p>React, Node.js, MongoDB</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+              <div class="job-card">
+                <h3>Android App Development</h3>
+                <p>Kotlin, Java</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+              <div class="job-card">
+                <h3>Data Analysis</h3>
+                <p>Python, SQL, Power BI</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-category">
+            <h2>🎨 Design</h2>
+            <div class="job-grid">
+              <div class="job-card">
+                <h3>Graphic Design</h3>
+                <p>Photoshop, Illustrator</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+              <div class="job-card">
+                <h3>UI/UX Design</h3>
+                <p>Figma, Prototyping</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+              <div class="job-card">
+                <h3>Product Design</h3>
+                <p>Mobile & Web Apps</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-category">
+            <h2>📢 Marketing</h2>
+            <div class="job-grid">
+              <div class="job-card">
+                <h3>Digital Marketing</h3>
+                <p>SEO, Ads, Analytics</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+              <div class="job-card">
+                <h3>Social Media Management</h3>
+                <p>Instagram, LinkedIn</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+              <div class="job-card">
+                <h3>Content Writing</h3>
+                <p>Blogs & Copywriting</p>
+                <button class="btn btn-primary" onclick="openHire()">
+                  Hire
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="page" id="login">
+      <section class="auth-section">
+        <div class="auth-container">
+          <div class="auth-form">
+            <h1>Login to FreelanceHub</h1>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="page" id="register">
+      <section class="auth-section">
+        <div class="auth-container">
+          <div class="auth-form">
+            <h1>Create Your Freelance Profile</h1>
+            <select>
+              <option>I want to work as Freelancer</option>
+              <option>I want to hire Freelancers</option>
+            </select>
+            <input type="text" placeholder="Full Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button class="btn btn-primary">Register</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="page" id="contact">
+      <section class="contact-section">
+        <div class="container">
+          <h1>Contact FreelanceHub Support</h1>
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Email" />
+          <textarea placeholder="How can we help you?"></textarea>
+          <button class="btn btn-primary">Send</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- APPLY PAGE -->
+    <div class="page" id="hire">
+      <section class="auth-section">
+        <div class="auth-container">
+          <div class="auth-form">
+            <div id="proposalForm">
+              <h1 class="auth-title">Hire This Freelancer</h1>
+
+              <p
+                id="selectedService"
+                style="text-align: center; font-weight: 600; margin-bottom: 4px"
+              ></p>
+              <p
+                id="selectedPrice"
+                style="text-align: center; color: #60a5fa; margin-bottom: 16px"
+              ></p>
+
+              <input type="text" placeholder="Your Full Name" required />
+              <input type="number" placeholder="Project Budget (₹)" required />
+              <textarea
+                placeholder="Describe your project requirements"
+                required
+              ></textarea>
+              <button class="btn btn-primary" onclick="submitProposal()">
+                Send Proposal
+              </button>
+              <button class="btn" onclick="goHome()">Cancel</button>
+            </div>
+
+            <div id="proposalSuccess" class="success-box">
+              <h2>Proposal Sent Successfully</h2>
+              <p>Your project request has been delivered to the freelancer</p>
+              <button class="btn btn-primary" onclick="goHome()">
+                Back to Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <p>© 2025 FreelanceHub. Hire Smart. Work Smart.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
