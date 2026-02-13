@@ -175,8 +175,9 @@ function saveJobs() {
 
 function displayFeaturedJobs() {
     const container = document.getElementById('featuredJobs');
+    if (!container) return;   // 👈 ADD THIS LINE
+
     const featuredJobs = allJobs.slice(0, 3);
-    
     container.innerHTML = featuredJobs.map(job => createJobCard(job)).join('');
 }
 
@@ -408,17 +409,16 @@ function addSampleJob() {
 
 // Add a new job every 30 seconds (for demo purposes)
 setInterval(addSampleJob, 30000);
-
-// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const id = this.getAttribute('href');
+
+        if (id === "#" || !document.querySelector(id)) return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
+        document.querySelector(id).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 });
 
@@ -512,16 +512,7 @@ function clearAllData() {
 }
 
 // Export functions for testing (if needed)
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        showPage,
-        filterJobs,
-        applyForJob,
-        handleLogin,
-        handleRegister,
-        handleContact
-    };
-}
+
 const links = document.querySelectorAll("[data-page]");
 const pages = document.querySelectorAll(".page");
 
@@ -533,10 +524,7 @@ links.forEach(link => {
     });
 });
 
-function showPage(id) {
-    pages.forEach(p => p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-}
+
 
 function openHire() {
     showPage("hire");
@@ -552,7 +540,7 @@ function submitProposal() {
 
 async function loadServices() {
   try {
-    const res = await fetch("http://localhost:5000/services");
+    const res = await fetch("https://fb-backend-ureh.onrender.com/services");
     const services = await res.json();
 
     console.log("Services from backend:", services);
