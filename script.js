@@ -434,20 +434,6 @@ function debouncedSearch() {
 }
 
 // Add event listeners for real-time search
-document.addEventListener('DOMContentLoaded', function() {
-    const filters = ['jobTitleFilter', 'locationFilter'];
-    filters.forEach(filterId => {
-        const element = document.getElementById(filterId);
-        if (element) {
-            element.addEventListener('input', debouncedSearch);
-        }
-    });
-    document.addEventListener("DOMContentLoaded", () => {
-  showUser();
-});
-
-    
-});
 
 // Add keyboard navigation
 document.addEventListener('keydown', (e) => {
@@ -473,7 +459,8 @@ function simulateLoadingDelay(callback, delay = 500) {
 function applyForJob(jobId) {
     const job = allJobs.find(j => j.id === jobId);
     if (job) {
-        const button = event.target;
+       const button = document.activeElement;
+
         const originalText = button.innerHTML;
         
         // Show loading state
@@ -522,7 +509,7 @@ links.forEach(link => {
 
 
 
-function openHire() {
+function openHireSimple() {
     showPage("hire");
 }
 
