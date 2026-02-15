@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FreelanceHub - Hire & Work Freelance</title>
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -42,11 +42,12 @@
         </ul>
 
         <!-- RIGHT: User -->
-        <li class="user-box" id="userBox">
+        <div class="user-box" id="userBox">
+
           <i class="fa-solid fa-envelope"></i>
           <span id="userEmail"></span>
           <button onclick="logout()" class="logout-btn">Logout</button>
-        </li>
+        </div>
 
         <!-- Mobile toggle -->
         <div class="nav-toggle" id="navToggle">
@@ -512,6 +513,6 @@
     <footer class="footer">
       <p>© 2025 FreelanceHub. Hire Smart. Work Smart.</p>
     </footer>
-    <script src="./script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>
