@@ -175,22 +175,29 @@ function saveJobs() {
 
 function displayFeaturedJobs() {
     const container = document.getElementById('featuredJobs');
-    if (!container) return;   // 👈 ADD THIS LINE
+    if (!container) return;   // ✅ correct safety check
 
     const featuredJobs = allJobs.slice(0, 3);
-    container.innerHTML = featuredJobs.map(job => createJobCard(job)).join('');
+    container.innerHTML = featuredJobs
+        .map(job => createJobCard(job))
+        .join('');
 }
 
 function displayJobs(jobs) {
     const container = document.getElementById('allJobs');
-    
+    if (!container) return;   // ✅ REQUIRED
+
     if (jobs.length === 0) {
-        container.innerHTML = '<div class="loading">No jobs found matching your criteria.</div>';
+        container.innerHTML =
+            '<div class="loading">No jobs found matching your criteria.</div>';
         return;
     }
-    
-    container.innerHTML = jobs.map(job => createJobCard(job)).join('');
+
+    container.innerHTML = jobs
+        .map(job => createJobCard(job))
+        .join('');
 }
+
 
 function createJobCard(job) {
     return `
