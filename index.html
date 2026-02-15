@@ -22,25 +22,33 @@
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
+        <!-- LEFT: Logo -->
         <div class="nav-logo">
           <i class="fas fa-briefcase"></i>
           <span>FreelanceHub</span>
         </div>
 
+        <!-- CENTER: Menu -->
         <ul class="nav-menu" id="navMenu">
           <li><a class="nav-link active" data-page="home" href="#">Home</a></li>
           <li><a class="nav-link" data-page="services" href="#">Gigs</a></li>
+          <li><a class="nav-link" data-page="contact" href="#">Contact</a></li>
           <li><a class="nav-link" data-page="login" href="#">Login</a></li>
           <li>
             <a class="nav-link" data-page="register" href="#">Register</a>
           </li>
-          <li><a class="nav-link" data-page="contact" href="#">Contact</a></li>
         </ul>
 
+        <!-- RIGHT: User -->
+        <li class="user-box" id="userBox">
+          <i class="fa-solid fa-envelope"></i>
+          <span id="userEmail"></span>
+          <button onclick="logout()" class="logout-btn">Logout</button>
+        </li>
+
+        <!-- Mobile toggle -->
         <div class="nav-toggle" id="navToggle">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </div>
       </div>
     </nav>
@@ -390,12 +398,19 @@
     <div class="page" id="login">
       <section class="auth-section">
         <div class="auth-container">
-          <div class="auth-form">
+          <form class="auth-form" id="loginForm">
             <h1>Login to FreelanceHub</h1>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button class="btn btn-primary">Login</button>
-          </div>
+
+            <input id="loginEmail" type="email" placeholder="Email" required />
+            <input
+              id="loginPassword"
+              type="password"
+              placeholder="Password"
+              required
+            />
+
+            <button class="btn btn-primary" type="submit">Login</button>
+          </form>
         </div>
       </section>
     </div>
@@ -404,17 +419,36 @@
     <div class="page" id="register">
       <section class="auth-section">
         <div class="auth-container">
-          <div class="auth-form">
+          <form class="auth-form" id="registerForm">
             <h1>Create Your Freelance Profile</h1>
-            <select>
-              <option>I want to work as Freelancer</option>
-              <option>I want to hire Freelancers</option>
+
+            <select id="userRole" required>
+              <option value="">Select Role</option>
+              <option value="freelancer">Freelancer</option>
+              <option value="client">Client</option>
             </select>
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button class="btn btn-primary">Register</button>
-          </div>
+
+            <input
+              id="registerName"
+              type="text"
+              placeholder="Full Name"
+              required
+            />
+            <input
+              id="registerEmail"
+              type="email"
+              placeholder="Email"
+              required
+            />
+            <input
+              id="registerPassword"
+              type="password"
+              placeholder="Password"
+              required
+            />
+
+            <button class="btn btn-primary" type="submit">Register</button>
+          </form>
         </div>
       </section>
     </div>

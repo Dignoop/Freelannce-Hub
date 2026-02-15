@@ -108,11 +108,7 @@ function initializeNavigation() {
         });
     });
 
-    // Mobile menu toggle
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-
+  
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
@@ -457,6 +453,10 @@ document.addEventListener('DOMContentLoaded', function() {
             element.addEventListener('input', debouncedSearch);
         }
     });
+    document.addEventListener("DOMContentLoaded", () => {
+  showUser();
+});
+
     
 });
 
@@ -600,4 +600,83 @@ if ("serviceWorker" in navigator) {
       .then(() => console.log("Service Worker Registered"))
       .catch(err => console.log("SW failed", err));
   });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  // LOGIN
+  // LOGIN
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const email = loginEmail.value.trim();
+    const password = loginPassword.value.trim();
+
+    if (!email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    // Save logged-in user
+    localStorage.setItem("loggedInUser", email);
+
+    showUser();
+    showPage("home");
+  });
+}
+
+
+  // REGISTER
+  const registerForm = document.getElementById("registerForm");
+  if (registerForm) {
+    registerForm.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const user = {
+        role: userRole.value,
+        name: registerName.value.trim(),
+        email: registerEmail.value.trim(),
+        password: registerPassword.value
+      };
+
+      if (!user.role || !user.name || !user.email || !user.password) {
+        alert("Fill all fields");
+        return;
+      }
+
+      localStorage.setItem("registeredUser", JSON.stringify(user));
+      alert("Registration successful!");
+      showPage("login");
+    });
+  }
+});
+
+function showUser() {
+  const email = localStorage.getItem("loggedInUser");
+
+  const userBox = document.getElementById("userBox");
+  const userEmail = document.getElementById("userEmail");
+
+  const loginLink = document.querySelector('[data-page="login"]');
+  const registerLink = document.querySelector('[data-page="register"]');
+
+  if (email) {
+    userEmail.textContent = email;
+    userBox.style.display = "flex";
+
+    loginLink.style.display = "none";
+    registerLink.style.display = "none";
+  }
+}
+
+function logout() {
+  localStorage.removeItem("loggedInUser");
+
+  document.getElementById("userBox").style.display = "none";
+
+  document.querySelector('[data-page="login"]').style.display = "inline-block";
+  document.querySelector('[data-page="register"]').style.display = "inline-block";
+
+  showPage("login");
 }

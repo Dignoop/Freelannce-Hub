@@ -2422,8 +2422,72 @@ input, textarea, select {
   width: 100%;
 }
 
-/* PUSH CONTENT BELOW NAVBAR */
-.hero,
-.page {
-  padding-top: 70px;
+/* PUSH CONTENT BELOW NAVBAR *//* Navbar layout fix */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Center menu */
+.nav-menu {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+/* User box (right side) */
+.user-box {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.user-box i {
+  color: #ea4335; /* Gmail red */
+  font-size: 16px;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  font-weight: 600;
+}
+/* ========================================= */
+/* 🔒 SAFE OVERRIDE – MOBILE USER FIX ONLY   */
+/* (NO REMOVALS, NO CONFLICTS)               */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+  /* Ensure menu stacks correctly */
+  .nav-menu {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* FORCE show logged-in user on mobile */
+  .nav-menu .user-box {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #1f2933;
+    font-size: 1rem;
+  }
+
+  .nav-menu .user-box i {
+    color: #ea4335;
+    font-size: 1.1rem;
+  }
+
+  .nav-menu .logout-btn {
+    font-size: 0.95rem;
+  }
 }
